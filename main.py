@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 
 from stats import chars_dict_to_sorted_list, get_num_words, get_word_frequency
@@ -25,7 +26,11 @@ def get_book_text(file_path: Path) -> str:
 
 
 def main():
-    file_path = Path("./books/frankenstein.txt")
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    file_path = Path(sys.argv[1])
     content = get_book_text(file_path)
     word_count = get_num_words(content)
     word_frequency = get_word_frequency(content)
