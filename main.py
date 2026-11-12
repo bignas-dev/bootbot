@@ -1,8 +1,6 @@
 from pathlib import Path
 
-
-def get_text_len(content: str) -> int:
-    return len(content.split())
+from stats import get_num_words
 
 
 def get_book_text(file_path: Path) -> str:
@@ -12,7 +10,7 @@ def get_book_text(file_path: Path) -> str:
 
 def main():
     content = get_book_text(Path("./books/frankenstein.txt"))
-    word_count = get_text_len(content)
+    word_count = get_num_words(content)
     print(f"Found {word_count} total words")
 
 
